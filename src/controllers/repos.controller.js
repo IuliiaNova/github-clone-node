@@ -41,6 +41,66 @@ async function getRepos(req, res, next) {
   }
 }
 
+async function getRepoById(req, res, next) {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).send({ status: 404 });
+  }
+  try {
+    const repoStored = await db.Repo.findById({ _id: id }).lean().exec();
+    if (!repoStored) {
+      return res.status(400).send({ status: 400 });
+    }
+    return res.status(200).send({ status: 200, repo: repoStored });
+  } catch (err) {
+    return res.status(500).send({ status: 500, error: err });
+  }
+}
+
+async function deleteRepoById(req, res, next) {
+  const { id } = req.params;
+  const { userId } = req.body
+  if (!id) {
+    return res.status(400).send({ status: 404 });
+  }
+  try {
+    const repoStored = await db.Repo.findByIdAndDelete({ _id: id }).lean().exec();
+    if (!repoStored) {
+      return res.status(400).send({ status: 400 });
+    }
+
+    await db.User.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { repos: repoStored._id } }
+    )
+    return res.status(200).send({ status: 200});
+  } catch (err) {
+    return res.status(500).send({ status: 500, error: err });
+  }
+}
+
+async function updateRepo(req, res, next) {
+  const { id } = req.params;
+  const { name, visibility, language } = req.body
+  if (!id) {
+    return res.status(400).send({ status: 404 });
+  }
+  try {
+    const repoStored = await db.Repo.findByIdAndUpdate(
+      { _id: id },
+      {name, visibility, language}).lean().exec();
+
+    if (!repoStored) {
+      return res.status(400).send({ status: 400 });
+    }
+
+    return res.status(200).send({ status: 200, repo: repoStored});
+  } catch (err) {
+    return res.status(500).send({ status: 500, error: err });
+  }
+}
+
+
 
 
 async function searchRepo(req, res) {
@@ -77,5 +137,8 @@ async function searchRepo(req, res) {
 module.exports = {
   postRepo,
   getRepos,
+  getRepoById,
+  updateRepo,
+  deleteRepoById,
   searchRepo
 }
