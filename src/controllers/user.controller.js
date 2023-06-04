@@ -1,15 +1,16 @@
 const db = require('../models')
 
 async function postUser(req, res, next) {
-  const { name, nickname, email, avatar } = req.body;
+  const { name, login, email, avatar } = req.body;
 
-  if (!name || !nickname || !email) {
+  if (!name || !login || !email) {
     return res.status(400).send({ message: "Missing required field" });
   }
 
   const user = new db.User({
+    id: _id,
     name,
-    nickname,
+    login,
     email,
     avatar
   });

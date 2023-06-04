@@ -1,11 +1,12 @@
-const mongoose = require('mongoose') 
+const mongoose = require('mongoose')
 const server = require('./server')
 const config = require('./config/config')
 const seeder = require('./db_seeder/seeder')
 
-try{
+try {
   mongoose.connect(config.db.MONGO_URL)
   server.listen(config.app.PORT, async () => {
+
     await seeder.seedUser()
     await seeder.seedRepos()
 
