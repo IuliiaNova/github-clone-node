@@ -78,7 +78,7 @@ For development I have created a seeders for basic User and Repositories
 
 **How to use:**
 
-- Run your server with ```npm run dev``
+- Run your server with ``npm run dev``
 - Open MongoDB Compass and press "connect"
 - Ensure that you have got correct the basic user and repositories
 - Then go to ``src/db_seeder/user.seeder`` and **delete the comment of lines 16-27**
