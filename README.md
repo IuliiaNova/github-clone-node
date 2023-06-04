@@ -134,7 +134,7 @@ For development I have created a seeders for basic User and Repositories
 
 ## Postman 
 
-for this project I have created a collection in Postman with the CRUD for reposotory and POST, GET for User
+For this project I have created a collection in Postman with the CRUD for repository and POST, GET for User
 
 **Get users**
 
