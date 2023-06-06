@@ -91,7 +91,7 @@ For development I have created a seeders for basic User and Repositories
 
 ## Project Structure
 
-|
+
 ├── controllers      // Contains the route handlers and business logic
 
 ├── middleware       // Contains middleware functions
