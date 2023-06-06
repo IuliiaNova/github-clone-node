@@ -46,7 +46,7 @@ Follow the steps below to set up the development environment:
 3. Install the project dependencies using NPM or Yarn: ``npm install or yarn install``
 
 ## Configuration
-Before running the application, you need to configure the environment variables. Create a .env file in the root directory of the backend project and provide the following variables:
+Before running the application, you need to configure the environment variables. Create a ``.env`` file in the root directory of the backend project and provide the following variables:
 
 ```
 API_VERSION={}
