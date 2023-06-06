@@ -93,9 +93,13 @@ For development I have created a seeders for basic User and Repositories
 
 |
 ├── controllers      // Contains the route handlers and business logic
+
 ├── middleware       // Contains middleware functions
+
 ├── models           // Contains the data models and schemas
+
 ├── routes           // Contains the API route definitions
+
 └── server.js        // Main entry point of the backend server
 
 ### Libraries 
